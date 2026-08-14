@@ -1,0 +1,3298 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>آریا موزیک</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.55)
+        ),
+        url("background3.png");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    color: white;
+
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+
+    width: 95%;
+
+    margin: 15px auto;
+
+    padding: 10px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        rgba(30,30,30,.65);
+
+    backdrop-filter: blur(20px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.35);
+
+}
+
+
+.logo {
+
+    color: #ffe600;
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    text-shadow:
+        0 0 15px
+        rgba(255,230,0,.6);
+
+}
+
+
+nav > a {
+
+    text-decoration: none;
+
+}
+
+
+.menu {
+
+    list-style: none;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+.menu li {
+
+    position: relative;
+
+}
+
+
+.menu a {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 9px;
+
+    border-radius: 12px;
+
+    transition: .25s;
+
+}
+
+
+.menu a:hover {
+
+    background:
+        rgba(255,0,60,.2);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 0 18px
+        rgba(255,0,60,.35);
+
+}
+
+
+.menu img {
+
+    width: 28px;
+
+    height: 28px;
+
+    object-fit: contain;
+
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.titr {
+
+    width: 90%;
+
+    margin: 45px auto;
+
+    text-align: center;
+
+    color: #17ff49;
+
+    font-size: 29px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 10px #32ff17,0 0 20px rgb(255, 230, 0)
+
+}
+
+
+/* =========================
+   MUSIC LIST
+========================= */
+
+.musics {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding-bottom: 60px;
+
+}
+
+
+/* =========================
+   MUSIC PLAYER
+========================= */
+
+.custom-player {
+
+    width: 90%;
+
+    max-width: 480px;
+
+    margin: 0 auto 45px;
+
+    padding: 23px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 26px;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(255,0,80,.22),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(100,0,255,.20),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            145deg,
+            rgba(22,22,35,.95),
+            rgba(7,7,14,.95)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    box-shadow:
+
+        0 20px 55px
+        rgba(0,0,0,.55),
+
+        inset 0 1px 1px
+        rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(20px);
+
+    color: white;
+
+}
+
+
+/* نور بالای کارت */
+
+.custom-player::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 200px;
+
+    height: 150px;
+
+    top: -80px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        #ff0055;
+
+    opacity: .12;
+
+    filter:
+        blur(60px);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================
+   SONG INFO
+========================= */
+
+.song-info {
+
+    text-align: center;
+
+    margin-bottom: 22px;
+
+}
+
+
+.song-name {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+
+    color: white;
+
+    text-shadow:
+        0 0 15px
+        rgba(255,0,90,.55);
+
+}
+
+
+.song-artist {
+
+    color: #999;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    direction: ltr;
+
+}
+
+
+.progress-area span {
+
+    min-width: 35px;
+
+    color: #999;
+
+    font-size: 11px;
+
+    text-align: center;
+
+}
+
+
+.progress {
+
+    flex: 1;
+
+    height: 7px;
+
+    position: relative;
+
+    background:
+        rgba(255,255,255,.10);
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+}
+
+
+.progress-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    position: relative;
+
+    border-radius: 20px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #ff003c,
+            #ff006f,
+            #8b2cff,
+            #00c6ff
+        );
+
+    box-shadow:
+
+        0 0 10px
+        rgba(255,0,80,.7),
+
+        0 0 20px
+        rgba(139,44,255,.35);
+
+    transition:
+        width .1s linear;
+
+}
+
+
+/* نقطه نوار */
+
+.progress-fill::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 13px;
+
+    height: 13px;
+
+    right: -6px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+
+        0 0 7px
+        #ff0055,
+
+        0 0 18px
+        #ff0055;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.player-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-top: 23px;
+
+}
+
+
+.player-buttons button {
+
+    border: none;
+
+    background: transparent;
+
+    color: #aaa;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+
+.player-buttons button:hover {
+
+    color: white;
+
+    transform:
+        scale(1.18);
+
+    text-shadow:
+        0 0 12px
+        #ff0055;
+
+}
+
+
+/* دکمه اصلی */
+
+.play-btn {
+
+    width: 62px;
+
+    height: 62px;
+
+    border-radius: 50%;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ff003c,
+            #8b2cff
+        ) !important;
+
+    color: white !important;
+
+    font-size: 21px !important;
+
+    box-shadow:
+
+        0 0 20px
+        rgba(255,0,80,.5),
+
+        0 8px 25px
+        rgba(0,0,0,.4);
+
+}
+
+
+.play-btn:hover {
+
+    transform:
+        scale(1.1) !important;
+
+    box-shadow:
+
+        0 0 35px
+        rgba(255,0,80,.75),
+
+        0 8px 30px
+        rgba(0,0,0,.5);
+
+}
+
+
+/* =========================
+   LYRICS BUTTON
+========================= */
+
+.lyrics-btn {
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 13px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        rgba(255,0,80,.2);
+
+    background:
+        rgba(255,255,255,.06);
+
+    color: #ddd;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: .3s;
+
+}
+
+
+.lyrics-btn:hover {
+
+    color: white;
+
+    background:
+        rgba(255,0,80,.16);
+
+    border-color:
+        rgba(255,0,80,.45);
+
+    box-shadow:
+        0 0 18px
+        rgba(255,0,80,.18);
+
+}
+
+
+/* =========================
+   LYRICS
+========================= */
+
+.lyrics {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+
+        max-height .5s ease,
+
+        opacity .4s ease,
+
+        margin .4s ease;
+
+}
+
+
+.lyrics.show {
+
+    max-height: 300px;
+
+    opacity: 1;
+
+    margin-top: 17px;
+
+    overflow-y: auto;
+
+}
+
+
+.lyrics p {
+
+    text-align: center;
+
+    color: #ddd;
+
+    font-size: 14px;
+
+    line-height: 2.3;
+
+}
+
+
+/* scrollbar */
+
+.lyrics::-webkit-scrollbar {
+
+    width: 4px;
+
+}
+
+
+.lyrics::-webkit-scrollbar-thumb {
+
+    background:
+
+        linear-gradient(
+            #ff003c,
+            #8b2cff
+        );
+
+    border-radius: 10px;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.main-footer {
+
+    width: 100%;
+
+    padding: 25px 15px;
+
+    background:
+        rgba(0,0,0,.85);
+
+    border-top:
+        1px solid
+        rgba(255,0,80,.2);
+
+    color: #ff174f;
+
+    text-align: center;
+
+    font-weight: bold;
+
+}
+
+
+.main-footer p {
+
+    font-size: 13px;
+
+    line-height: 2;
+
+}
+
+
+.social-links {
+
+    list-style: none;
+
+    margin-top: 12px;
+
+}
+
+
+.social-links li {
+
+    display: inline;
+
+    margin: 0 8px;
+
+}
+
+
+.social-links a {
+
+    color: #ffe600;
+
+    text-decoration: none;
+
+    transition: .25s;
+
+}
+
+
+.social-links a:hover {
+
+    color: #ff174f;
+
+    text-shadow:
+        0 0 10px
+        #ff174f;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    nav {
+
+        width: 94%;
+
+        padding: 9px 12px;
+
+    }
+
+    .logo {
+
+        font-size: 21px;
+
+    }
+
+    .menu img {
+
+        width: 25px;
+
+        height: 25px;
+
+    }
+
+    .titr {
+
+        font-size: 23px;
+
+        margin: 35px auto;
+
+    }
+
+    .custom-player {
+
+        width: 94%;
+
+        padding: 18px;
+
+        border-radius: 22px;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+.lyrics p {
+    white-space: pre-line;
+    text-align: center;
+
+    color: #ddd;
+
+    font-size: 15px;
+
+    line-height: 2.4;
+
+    padding: 5px 10px;
+}
+
+
+
+
+
+
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <a href="https://ariyah15.github.io/music/">
+
+        <div class="logo">
+            آریا موزیک
+        </div>
+
+    </a>
+
+
+    <ul class="menu">
+
+        <li>
+
+            <a href="#">
+
+                <img
+                    src="https://gooyatech.com/wp-content/uploads/2023/09/%D8%AF%D8%A7%D9%86%D9%84%D9%88%D8%AF-%D8%A7%DB%8C%D8%AA%D8%A7-%D8%A7%D9%86%D8%AF%D8%B1%D9%88%DB%8C%D8%AF-%DA%AF%D9%88%DB%8C%D8%A7%D8%AA%DA%A9.png"
+                    width="28"
+                    alt="ایتای"
+                >
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a
+                href="https://www.aparat.com/Ariya_1515"
+                target="_blank"
+            >
+
+                <img
+                    src="https://rasanika.com/storage/i/17175/lWpW0pHz1HLVgP21/orig-900/icons8-aparat--512.webp"
+                    width="28"
+                    alt="آپارات"
+                >
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="#">
+
+                <img
+                    src="https://rubika.ir/static/images/logos/minimal/minimal.png"
+                    width="28"
+                    alt="روبیکا"
+                >
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     TITLE
+========================= -->
+
+<div class="titr">
+
+    ❤ پلی لیست موزیک های من ❤
+
+</div>
+
+
+<!-- =========================
+     MUSIC LIST
+========================= -->
+
+<div class="musics">
+
+
+<!-- آهنگ 1 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            ممد حیدری
+        </div>
+
+        <div class="song-artist">
+            آریا موزیک
+        </div>
+
+    </div>
+
+
+    <audio src="1.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">
+            0:00
+        </span>
+
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+
+        <span class="duration">
+            0:00
+        </span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+متنش رو میخوای چکار برو ببینم 🤣
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 2 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            All Eyes On Me
+        </div>
+
+        <div class="song-artist">
+            2Pac
+        </div>
+
+    </div>
+
+
+    <audio src="2Pac dj belite all eyes on me 320.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+           
+Live the life of a thug - until the day I die
+
+ 
+
+زندگی یک اراذل و اوباش - تا روزی که من بمیرم
+
+Live the life of a boss player
+
+ 
+
+زندگی یک بازیکن رئیس را تجربه کنید
+
+All eyes on me
+
+ 
+
+تمام نگاهها به من دوخته شده
+
+All eyes on me
+
+ 
+
+تمام نگاهها به من دوخته شده
+
+Live the life of a thug - until the day I die
+
+ 
+
+زندگی یک اراذل و اوباش - تا روزی که من بمیرم
+
+Live the life of a boss player 'cause even gettin' high
+
+ 
+
+زندگی یک بازیکن رئیس را داشته باشید، زیرا حتی به اوج می رسید
+
+ 
+
+Hey, to my - 'Pac
+
+ 
+
+هی، به من - 'پک
+
+So much trouble in the world
+
+ 
+
+اینهمه دردسر تو دنیا
+
+Can't nobody feel your pain
+
+ 
+
+هیچکس نمیتونه درد تو رو حس کنه
+
+The world's changin' everyday, time's movin' fast
+
+ 
+
+دنیا هر روز در حال تغییر است، زمان به سرعت در حال حرکت است
+
+My girl said I need a raise, how long will she last?
+
+ 
+
+دخترم گفت من نیاز به افزایش حقوق دارم، تا کی دوام می آورد؟
+
+I'm caught between my woman and my pistol and my chips
+
+ 
+
+من بین زنم و تپانچه و چیپسم گیر کرده ام
+
+Triple beam, got some smokers on, whistle as I dip
+
+ 
+
+پرتو سه گانه، چند سیگاری را سوار کردم، در حالی که فرو می روم سوت می زنم
+
+I'm lost in the land with no plan, livin' life flawless
+
+ 
+
+من در سرزمینی گم شده ام که هیچ برنامه ای ندارم، بی عیب و نقص زندگی می کنم
+
+Crime boss, contraband, let me toss this
+
+ 
+
+رئیس جنایت، کالای قاچاق، بگذار این را پرت کنم
+
+Mediocre's got a lot of nerve
+
+ 
+
+متوسط خیلی اعصاب داره
+
+Let my bucket swerve, I'm takin' off from the curb
+
+ 
+
+بگذار سطل من منحرف شود، من از حاشیه پیاده می شوم
+
+ 
+
+The nervousness neglect make me pack a TEC
+
+ 
+
+غفلت عصبی باعث می شود یک TEC بسته کنم
+
+Devoted to servin' this Moët and pay checks
+
+ 
+
+وقف خدمت به این Moët و پرداخت چک
+
+Like Akai satellite - I'm forever ballin'
+
+ 
+
+مانند ماهواره Akai - من برای همیشه بالین هستم
+
+It ain't right: parasites, triggers, and fleas crawlin'
+
+ 
+
+درست نیست: انگل ها، محرک ها و کک ها در حال خزیدن هستند.
+
+Sucker, duck and get busted, no emotion
+
+ 
+
+مکنده، اردک و شکسته شدن، بدون احساس
+
+My devotion is handlin' my business -keep on coastin'
+
+ 
+
+فداکاری من مدیریت کسب و کار من است - در ساحل باشید
+
+Where you goin'? I been there, came back as lonely, homie
+
+ 
+
+کجا میری؟من آنجا بودم، به عنوان تنها برگشتم، خانواده
+
+Steady flowin' against the grain, - still don't know me
+
+ 
+
+پیوسته در برابر دانه جریان دارد، - هنوز من را نمی شناسید
+
+ 
+
+It's about the money in this rap shit, this crap shit
+
+ 
+
+این در مورد پول در این رپ گهه، این مزخرفات است
+
+It ain't funny - don't even know how to act, shit
+
+ 
+
+خنده دار نیست - حتی نمی دانم چگونه عمل کنم، لعنتی
+
+What can I do? What can I say? Is there another way?
+
+ 
+
+چه می توانم بکنم؟چه می توانم بگویم؟ایا راه دیگری هست؟
+
+Blunts and gin all day, 24 parlay
+
+ 
+
+بلانت و جین در تمام روز، 24 پارلی
+
+My little homie G, can't you see I'm buster-free?
+
+ 
+
+دوست کوچولوی من جی، نمی‌بینی که من بی‌باستر هستم؟
+
+- Just can't stand me, all eyes on me
+
+ 
+
+- فقط نمیتونی من رو تحمل کنی، همه چشمام به منن
+
+ 
+
+Live the life of a thug - until the day I die
+
+ 
+
+زندگی یک اراذل و اوباش - تا روزی که من بمیرم
+
+Live the life of a boss player
+
+ 
+
+زندگی یک بازیکن رئیس را تجربه کنید
+
+All eyes on me
+
+ 
+
+تمام نگاهها به من دوخته شده
+
+All eyes on me
+
+ 
+
+تمام نگاهها به من دوخته شده
+
+Live the life of a thug - until the day I die
+
+ 
+
+زندگی یک اراذل و اوباش - تا روزی که من بمیرم
+
+Live the life of a boss player 'cause even gettin' high
+
+ 
+
+زندگی یک بازیکن رئیس را داشته باشید، زیرا حتی به اوج می رسید
+
+All eyes on me
+
+ 
+
+تمام نگاهها به من دوخته شده
+
+ 
+
+The feds is watchin' - plottin' to get me
+
+ 
+
+فدرال رزرو در حال تماشا هستند - نقشه می کشند تا من را بگیرند
+
+Will I survive? Will I die? Come on, let's picture the possibility
+
+ 
+
+آیا من زنده خواهم ماند؟آیا من خواهم مرد؟بیا، بیایید این امکان را تصور کنیم
+
+Givin' me charges, lawyers makin' a grip
+
+ 
+
+به من اتهام می زنند، وکلا در حال چنگ زدن هستند
+
+I told the judge I was raised wrong and that's why I blaze
+
+ 
+
+من به قاضی گفتم که اشتباه بزرگ شده ام و به همین دلیل است که می پرسم
+
+Was hyper as a kid, cold as a teenager
+
+ 
+
+در کودکی بیش از حد بود، در نوجوانی سرد بود
+
+On my mobile, callin' big shots on the scene major
+
+ 
+
+در تلفن همراه من، نماهای بزرگ را در صحنه اصلی صدا می زنم
+
+ 
+
+Packin' hundreds in my drawers - the law
+
+ 
+
+صدها را در کشوهایم جمع می کنم - قانون
+
+Passion, I'm livin' rough and raw
+
+ 
+
+اشتیاق، من خشن و خام زندگی می کنم
+
+Catchin' cases at a fast rate, ballin' in the fast lane
+
+ 
+
+گرفتن کیس با سرعت بالا، توپ زدن در لاین سریع
+
+Hustle 'til the mornin', never stopped until the cash came
+
+ 
+
+شلوغی "تا صبح"، هرگز متوقف نشد تا زمانی که پول نقد آمد
+
+Live my life as a thug - until the day I die
+
+ 
+
+زندگی ام را به عنوان یک اراذل زندگی کن - تا روزی که بمیرم
+
+Live my life as a boss player, 'cause even gettin' high
+
+ 
+
+زندگی‌ام را به‌عنوان یک بازیکن رئیس زندگی کنم، زیرا حتی به اوج می‌رسم
+
+These - got me tossin'
+
+ 
+
+اینها - باعث شد من پرت کنم
+
+I put the top down, now it's time to floss my-
+
+ 
+
+من بالا را پایین گذاشتم، حالا وقت آن است که نخ دندان بکشم-
+
+Keep your head up - make these - suffer
+
+ 
+
+سرت را بالا بگیر - اینها را درست کن - رنج بکش
+
+ 
+
+Up in the Benz, burnin' rubber
+
+ 
+
+بالا در بنز، لاستیک می سوزد
+
+The money is mandatory, the hoes is for the stress
+
+ 
+
+پول اجباری است، هیل برای استرس است
+
+This criminal lifestyle, equipped with a bulletproof vest
+
+ 
+
+این سبک زندگی مجرمانه، مجهز به جلیقه ضد گلوله است
+
+Make sure your eyes is on the meal ticket, get your money
+
+ 
+
+مطمئن شوید که چشمتان به بلیط غذا است، پولتان را بگیرید
+
+Get rich and we'll kick it, all eyes on me
+
+ 
+
+پولدار شو و ما به آن لگد می زنیم، همه به من نگاه می کنند
+
+ 
+
+Live the life of a thug - until the day I die
+
+ 
+
+زندگی یک اراذل و اوباش - تا روزی که من بمیرم
+
+Live the life of a boss player
+
+ 
+
+زندگی یک بازیکن رئیس را تجربه کنید
+
+All eyes on me
+
+ 
+
+تمام نگاهها به من دوخته شده
+
+All eyes on me
+
+ 
+
+تمام نگاهها به من دوخته شده
+
+Live the life of a thug - until the day I die
+
+ 
+
+زندگی یک اراذل و اوباش - تا روزی که من بمیرم
+
+Live the life of a boss player 'cause even gettin' high
+
+ 
+
+زندگی یک بازیکن رئیس را داشته باشید، زیرا حتی به اوج می رسید
+
+All eyes on me
+
+ 
+
+تمام نگاهها به من دوخته شده
+
+ 
+
+Pay attention, my - see how that - go?
+
+ 
+
+توجه کن، من - ببین چطور پیش می رود؟
+
+Walk up in this - and it be like, "Bing!"
+
+ 
+
+در این راه بروید - و مانند "بینگ!"
+
+Live the life of a thug - until the day I die
+
+ 
+
+زندگی یک اراذل و اوباش - تا روزی که من بمیرم
+
+Live the life of a boss player 'cause even gettin' high
+
+ 
+
+زندگی یک بازیکن رئیس را داشته باشید، زیرا حتی به اوج می رسید
+
+I got bustas, hoes, and police watchin' a nigga, you know?
+
+ 
+
+من بوستا، بیل زدن، و پلیس در حال تماشای یک نیگا، می دانید؟
+
+Live the life of a thug - until the day I die
+
+ 
+
+زندگی یک اراذل و اوباش - تا روزی که من بمیرم
+
+Live the life of a boss player, all eyes on me
+
+ 
+
+زندگی یک بازیکن رئیس را داشته باشید، همه به من نگاه می کنند
+
+He he he, it's like what they think?
+
+ 
+
+او او او، آن را مانند آنچه آنها فکر می کنند؟
+
+I'm walkin' around with some ki's in my pocket or somethin'
+
+ 
+
+من با چند کی در جیب یا چیزی در حال قدم زدن هستم
+
+They think I'm goin' back to jail, they really on that dope
+
+ 
+
+آنها فکر می کنند من به زندان برمی گردم، آنها واقعاً دوپینگ دارند🎵
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 3 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Married Life
+        </div>
+
+        <div class="song-artist">
+            Soundtrack
+        </div>
+
+    </div>
+
+
+    <audio src="03_-_married_life-www.nicesoundtracks.com-.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+           متن ندارد✌🤣
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 4 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Highway
+        </div>
+
+        <div class="song-artist">
+            Behzad Leito & Arown
+        </div>
+
+    </div>
+
+
+    <audio src="08.Behzad Leito & Arown - Highway (320).mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+           شیشه ها ماته من مات نگاهش
+
+دیوونه تره اَ منه
+
+معلومه از اون چشاش
+
+اگه بره یه شب
+
+از سنگ میشه قلب باز
+
+نمیاد به جاش
+
+نمیاد به جاش
+
+اتوبان ترافیک قفل
+
+موزیکم بلنده صدا دیستورد
+
+اعصابش خرده و چشا خیس سرخ
+
+پروازش فردائه به جا بیستم
+
+ای بابا
+
+نیست دیگه پهلوم از فردا شب
+
+خاطره ساختیم با هم هر جا شهر
+
+بدونِ اون میشم دست تنها تر
+
+گفتش بریم گفتم هستم تا تهش
+
+دلم تنگ میشه من واسه لب داغت
+
+دو تایی با هم دیگه بریم لب ساحل
+
+با نورِ ماه میشی شب کامل
+
+ای کاش از این بدتر نشه حالت
+
+نه نه میگی کردم من روانیش
+
+این آخرا با حرف ما همو نیش میزدیم
+
+میکردم من عصبانیش
+
+همه چی بگایی بود بگو کمابیش
+
+به چراغای خیابون ماتم زده
+
+دلتنگی برا آدم بده
+
+شاید اصلاً اینطوری راحت تره
+
+ای کاش واقعا نره
+
+بذار تنت بمونه من کت چرمم
+
+درد میگیره بدونت کل قلبم
+
+الآن بارون زده مات شیشه
+
+این زندگی بی چشات نمیشه
+
+نه
+
+شیشه ها ماته من مات نگاش
+
+دیوونه تره اَ منه
+
+معلومه از اون چشاش
+
+اگه بره یه شب
+
+از سنگ میشه قلب باز
+
+نمیاد به جاش
+
+نمیاد به جاش
+
+زیر بارون تو ماشین بغلم وت شد
+
+120 توو های وی
+
+بگاییتو ول کن
+
+بک سیت تو روز نوری ماهی که بود رو کمرش
+
+اون منو دید الان دیوونه تره
+
+حسم بگا نره
+
+بی من یه وقت یجا نره
+
+فقط خواستم تند تر برم باهاش
+
+فکر نکنم به آخرش
+
+رسید اه
+
+عاشقتم به دلش موند
+
+نخواست حرف گفت موزیکو پلی کن
+
+بگا رفتم چون داشتم بهش حسو
+
+Playboy بازی کردی با قلب یه
+
+شیشه ها ماته من مات نگاهش
+
+دیوونه تره اَ منه
+
+معلومه از اون چشاش
+
+اگه بره یه شب
+
+از سنگ میشه قلب باز
+
+نمیاد به جاش
+
+نمیاد به جاش
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 5 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Belly Dancer
+        </div>
+
+        <div class="song-artist">
+            Akon
+        </div>
+
+    </div>
+
+
+    <audio src="akon_belly_dancer bananza 128.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+        Hey, ladies drop it down
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+Shake ya body like a belly dancer
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza (hey girl)
+
+Shake ya body like a belly dancer
+
+Yo, excuse me, beg your pardon girl
+
+Do you have any idea what you starting girl
+
+You got me tingiling, come to me mingiling
+
+Steppin’ off lookin’ bootylicious and jingiling
+
+When you walk, I see it baby girl
+
+When you talk, I believe it baby girl
+
+I like that, thick-petite n’ pretty
+
+Little touch is a ditty
+
+Love to work the kitty like purrrrrrr
+
+She loves to stirr it up, purrrrrr
+
+I can hear her purring up
+
+‘Cause she’s the type that’ll get arousy u[p
+
+Get you excited and call her boyfriend up (ohh)
+
+What’s the plan without the plan B
+
+We can meet up at the hutter house for the t.v
+
+So stand by like a butty p!♫!
+
+While I watch this beautiful thing shake that !♫!
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+Shake ya body like a belly dancer
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+Shake ya body like a belly dancer
+
+Girl, I must say you the flyest thang in here
+
+You’re so hot we gon’ need some rain in here
+
+Type to make ex-gangstas bang in here
+
+Girl you could do anything you want in here
+
+Clown if you want to, frown if you want to
+
+You ain’t even gotta drop down if you want to
+
+‘Cause I’d rather see you shake it standin’
+
+Either way you do it girl you look outstandin (uh-huh)
+
+And now you got me spending (uh-huh)
+
+The way you got that body bendin’ (uh-huh)
+
+An !♫! like that girl you gotta be kickin’
+
+Had me goin’ to church, next day repentant
+
+Lap dancing for my FA crew
+
+Slide it over to boo ’cause he want some too
+
+Up in the VIP with no fee
+Blessing you with the G even though we gettin’ it free so
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+♪♪♪
+
+Shake ya body like a belly dancer
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+Shake ya body like a belly dancer
+
+Girl, shake ya body-body
+
+With somebody-body
+
+Whatever you do don’t break your body body
+
+After the party-party
+
+Grab a hottie-hottie
+
+In the back seat of your Maseratti-ratti
+
+Jiggle jiggle it to the left (ah ah ah)
+
+Jiggle jiggle it to the right (ah ah ah)
+
+Jiggle it to the front then jiggle it to the back
+
+And jiggle jiggle it all-all night (ah ah ah)
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+Shake ya body like a belly dancer
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+Shake ya body like a belly dancer
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+Shake ya body like a belly dancer
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+Shake ya body like a belly dancer
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+Shake ya body like a belly dancer
+
+Hey, ladies drop it down
+
+Just want to see you touch the ground
+
+Don’t be shy girl go bananza
+
+Shake ya body
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 6 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Дикая львица
+        </div>
+
+        <div class="song-artist">
+            Alex & Rus
+        </div>
+
+    </div>
+
+
+    <audio src="alex_& rus_дикая_львица.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+ترجمه متن آهنگ:
+
+شیرهای وحشی / شما ملکه من هستید / ماری حمام خود را مرتب کنید
+
+مجذوب شدم / شیرهای وحشی / شما ملکه من هستید
+
+به الکل احتیاج دارید / خوب بیایید برای عشق بنوشیم
+
+♪♪♪
+
+دوباره سرزنش می شود، رسوا می شود
+
+تو قلاب روی دست من گذاشتی
+
+جایی که ناپدید می شوید ، شب تعجب کرده اید
+
+و من با دوستان می سوزم تا ذوب شوند
+
+سر دیوانه می شود
+
+مقدار موجود در جیب ما اندک نیست
+
+ماله تمام شب به من نگاه می کند
+
+دو ویسکی با کولا و کودک من
+
+من شما را از شب با اتومبیل از باشگاه انتخاب خواهم کرد
+
+و بدون اینکه به پدر و مادرم بگویم ، به دریا می روم
+
+شراب می نوشیم ، پس بیایید برویم
+
+فیلم تماشا کنید
+
+♪♪♪
+
+و بعد از آن شما را تا صبح به خانه خود می برم
+
+شیرهای وحشی / شما ملکه من هستید / ماری حمام خود را مرتب کنید
+
+مجذوب شدم / شیرهای وحشی / شما ملکه من هستید
+
+به الکل احتیاج دارید / خوب بیایید برای عشق بنوشیم
+
+♪♪♪
+
+من بعد از تو دویدم
+
+برای هرکسی که به شما توهین کند ، جنگ کنید
+
+نه من فوق العاده نیستم ، نه یک ابرقهرمان
+
+نه ، من بعضی اوقات سرما می خورم
+
+بین ما ، از نزاع ها آتش سوزی رخ داد
+
+قطعات روی زمین است و من دوباره پابرهنه هستم
+
+این عشق نیست ، چرخ فری
+
+من می خواهم همه چیز را برای شما تعریف کنم
+
+من شما را از شب با اتومبیل از باشگاه انتخاب خواهم کرد
+
+و بدون اینکه به پدر و مادرم بگویم ، به دریا می روم
+
+شراب می نوشیم ، پس بیایید به تماشای یک فیلم برویم
+
+و بعد از آن شما را تا صبح به خانه خود می برم
+
+♪♪♪
+
+شیرهای وحشی / شما ملکه من هستید / ماری حمام خود را مرتب کنید
+
+مجذوب شدم / شیرهای وحشی / شما ملکه من هستید
+
+به الکل احتیاج دارید / خوب بیایید برای عشق بنوشیم
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 7 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Canto De Luna
+        </div>
+
+        <div class="song-artist">
+            H6itam / Icedmane / Dysmane
+        </div>
+
+    </div>
+
+
+    <audio src="Canto_De_Luna_-_H6itam_Icedmane_Dysmane.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+           فانک متن نداره برو بعدی😂😥
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 8 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Canto De Luna Super Slowed
+        </div>
+
+        <div class="song-artist">
+            H6itam / Icedmane / Dysmane
+        </div>
+
+    </div>
+
+
+    <audio src="Canto_De_Luna_super_Slowed_-_H6itam_Icedmane_Dysmane.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+             فانک متن نداره برو بعدی😂😥
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 9 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Beanie
+        </div>
+
+        <div class="song-artist">
+            Chezile
+        </div>
+
+    </div>
+
+
+    <audio src="Chezile - Beanie (320).mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+واقعا آهنگ قشنگیه گوش بده لذت ببر 😢
+
+
+Hear it in your tone
+
+آن را در ﻟﺤﻦ ﺧﻮد ﺑﺸﻨﻮ
+
+You’re slowly letting go
+
+ﺗﻮ آرام آرام داری رﻫﺎ ﻣﻰ ﻛﻨﻰ
+
+Are you turning off your phone Oh
+
+آﻳﺎ داری ﺗﻠﻔﻦ ﺧﻮد را ﺧﺎﻣﻮش ﻣﻰ ﻛﻨﻰ اوه
+
+Feelings turn cold
+
+اﺣﺴﺎﺳﺎت ﺳﺮد ﻣﻰ ﺷﻮﻧﺪ
+
+So cold for you
+
+ﺧﻴﻠﻰ ﺳﺮد ﺑﺮای ﺗﻮ
+
+So cold for you
+
+ﺧﻴﻠﻰ ﺳﺮد ﺑﺮای ﺗﻮ
+
+Oh I try to break apart oh
+
+اوه ﺳﻌﻰ ﻣﻰ ﻛﻨﻢ از ﻫﻢ ﺟﺪا ﺷﻮم اوه
+
+You don’t wanna try no more more no more
+
+ﺗﻮ دﻳﮕﺮ ﻧﻤﻰ ﺧﻮاﻫﻰ ﺗﻠﺎش ﻛﻨﻰ ﺑﻴﺸﺘﺮ ﺑﻴﺸﺘﺮ ﻧﻪ ﺑﻴﺸﺘﺮ
+
+Why why oh
+
+ﭼﺮا ﭼﺮا اوه
+
+Hear it in your tone
+
+آن را در ﻟﺤﻦ ﺧﻮد ﺑﺸﻨﻮ
+
+You’re slowly letting go
+
+ﺗﻮ آرام آرام داری رﻫﺎ ﻣﻰ ﻛﻨﻰ
+
+Are you turning off your phone Oh
+
+آﻳﺎ داری ﺗﻠﻔﻦ ﺧﻮد را ﺧﺎﻣﻮش ﻣﻰ ﻛﻨﻰ اوه
+
+Feelings turn cold
+
+اﺣﺴﺎﺳﺎت ﺳﺮد ﻣﻰ ﺷﻮﻧﺪ
+
+So cold for you
+
+ﺧﻴﻠﻰ ﺳﺮد ﺑﺮای ﺗﻮ
+
+So cold for you
+
+ﺧﻴﻠﻰ ﺳﺮد ﺑﺮای ﺗﻮ
+
+Oh I try to break apart oh
+
+اوه ﺳﻌﻰ ﻣﻰ ﻛﻨﻢ از ﻫﻢ ﺟﺪا ﺷﻮم اوه
+
+You don’t wanna try no more more no more
+
+ﺗﻮ دﻳﮕﺮ ﻧﻤﻰ ﺧﻮاﻫﻰ ﺗﻠﺎش ﻛﻨﻰ ﺑﻴﺸﺘﺮ ﺑﻴﺸﺘﺮ ﻧﻪ ﺑﻴﺸﺘﺮ
+
+Why why oh
+
+ﭼﺮا ﭼﺮا اوه
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 10 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Bad Zaat
+        </div>
+
+        <div class="song-artist">
+            Hiphopologist
+        </div>
+
+    </div>
+
+
+    <audio src="Hiphopologist - Bad Zaat.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+ خیابون چپ چپ نگاهم میکردن همه هولات
+
+اومد یکی دیگه پیشم دروغ گفتم قهرم باهات
+
+ندادم بهت محل رفتی به یه محل دادی
+
+عربده زدم پاتیل تو زدی قلبم با تیر
+
+جوابتو نمیدم میگیری بیست بار سینا رو
+
+خودت نیستی میبینم دوستات اینا رو
+
+ویساشم دارم گفتن دوستات چیا رو
+
+الان خودت نیستی برام میخورن دوستات اینا رو
+
+آدرس یه دافی با اکسنت دیدم عکست رو ابرا
+
+میره بعدی با یه ابسنت میاد بد بچ روحت شاد
+
+نمیخواستی بگردی دروم شلوغ بود
+
+کردم ترکش که ازم داره ترکش تو هر جا
+
+جای خالیت تو دلم یخ زده حتی تو گرما
+
+که الان بچه دورمه بیشتر از مهدکودک ها
+
+به رفتن عادت کن تموم میشه همه بودنا
+
+از وقتی رفتم یه شب نموند بدنت تو شلوار بچ
+
+روحم ساخته شد نباش رو اعصاب بچ
+
+زنگ نزن بهت میرینم نباش رو اعصاب بچ
+
+تک تک وایبام RIP ان سرت باز بچ
+
+الان دوستات جات میان میدم میرن هارد بچ
+
+هر کی بود تو راهت بغل کردی بچه بگو بازم غلط کردی
+
+من که تو رو دادم فقط ترجیح رفته تو رو یادم برم گردی
+
+هر کی بود تو راهت بغل کردی حتی دیگه نمیگی غلط کردی
+
+من که تو رو دادم فقط ترجیح رفته تو رو یادم برم گردی
+
+همونم که هر کاری کنم باز پشتم میگن حرف
+
+یه شب توهمین شبا میزدم ک* چرخ بی هدف
+
+فرداش بهم گفتن دوس دخترت با کوک رفت رو علف
+
+باز شروع شد زر زدناشون پشتم تو هر جمع
+
+کشتم تو خودم هه حتی زدم مشتم تو خودم
+
+دوست داشتم دست بلند نکردم ک* مغز رو تو هم
+
+فکر نکن ترسیدم ریختم کلاً تو خودم
+
+میگذره درس میشه ولی نترس دیگه
+
+درداتون سر میشه قلبت نترس میشه
+
+روز میره شب میشه دوست باهات بد میشه
+
+اونکه میخواستی بی حس از کنارت رد میدونم باید اعتماد کنم واقعا به کی
+
+لیوانم بخوره به کی تو هر بارندگی و
+
+میدونم فرق اعتیاد و وابستگی و که نه تو رو جدی گرفتم نه خوانندگیو
+
+هر کی بود تو راهت بغل کردی بچه بگو بازم غلط کردی
+
+من که تو رو دادم فقط ترجیح رفته تو رو یادم برم گردی
+
+هر کی بود تو راهت بغل کردی حتی دیگه نمیگی غلط کردی
+
+من که تو رو دادم فقط ترجیح رفته تو رو یادم برم گردی
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 11 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Belaad
+        </div>
+
+        <div class="song-artist">
+            Hiphopologist
+        </div>
+
+    </div>
+
+
+    <audio src="Hiphopologist - Belaad.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+ به ما زنگ بزن چیزی داشتی دآش نیاز
+ 
+
+ مرد هزار چهره نداره ماسک نیاز
+رپفا مدینه فاضله قاچاق چیاست
+
+هر چند درآمدش مث قاچاق سیاه
+
+چینتم پیاده میرفتی یکی دزدید رفت
+
+واسه هر دعوا نزن به پلیس زنگ
+
+اگه رفیق سروشی واست خبر بد دارم
+
+گوله ها داغه قد خورشید رد
+
+اگه دشمن سروشی که نگو جایی بده
+
+کشمش هم تخمیر نکن زمین بازی منه
+
+شیش تا بلانت 4g پیچیدم برا همه
+
+رکورد دستِ منه، جلوم علی دایی کمه
+
+رفاقت داداشی، رقابت با لاشی
+
+نداریم حتی، حمایت بابایی
+
+توی رپ میخوری، یا با دست یا با تیر
+
+حاصل میکنم یا با کش یا آژیر
+
+جوابتو نمیدم چون بچه ای
+
+رپکن شدی چون مد شده رپ قری
+
+جایی منو تنها ببینی میشی قهوه ای
+
+میریزه کچل تر میشی از سپی خلس
+
+پس دشمن من شده چون مده
+
+یا دنبال تجویز کورتونه
+
+بلادم مافیاست بیشتر از کورلئونه (Corleone)
+
+شما نهایت زدناتون پُر تفه
+
+خوش اومدی به بلاد پارتی
+
+کاری باهات نداریم با کاگانی
+
+خوش اومدی به بلاد پارتی
+
+مصدوم میدی بشه داستانی
+
+خوش اومدی به بلاد پارتی
+
+کاری باهات نداریم با کاگانی
+
+کنیاک بگیریم تا پاگانی
+
+کار یاد میگیرین با چاقالی
+
+مافیا شدیم دادا، بازی دائمه بالا
+
+پسر عمو خوش اومدی توو بهشت خلافکارا
+
+واسه هوادارا تلاش کردم توو این سالا
+
+ببین تووی پکا سفیده برعکس عزادارا
+
+هر چی که تو میخونی حرفای کاذبه داش
+
+توو زندگیت هم نبودن افراد سابقه دار
+
+نمیذاریم براتون شبا یه خواب دراز
+
+یه روز میگیره خرتونو اعضای باند بلاد
+
+همسایه با یه دنا میاد تووی کوچه میره
+
+فضول شده بفهمه آشپزخونه توو خونه کیه
+
+شنیده پولداریم باس بفهمه پول چیه
+
+استودیو لابراتوآره درآمدم توو دلیه
+
+رفاقت ابدیه، دنبالم کلانتریه
+
+تجارت خطریه، پلیس میگه فاضی کیه
+
+تا میبینم واریزیه پرینت اس ام اس
+
+امنیت میگه برف داری قد اورست
+
+اینا پول رپه خودم درشون اوردم
+
+دو تا زندانیو الآن درشون اوردم
+
+رپرای دیگه فقط سرتونو بردن
+
+موزیکای ما میسازه شبتونو کلاً
+
+ترکامون مث مواد پخشه
+
+ما رو گوش میدی صاف میشه نوار قلبت
+
+کار دادیم گروهکت پاچید الآن بچه
+
+میگیرمت مث مدار بسته
+
+خوش اومدی به بلاد پارتی
+
+کاری باهات نداریم با کاگانی
+
+خوش اومدی به بلاد پارتی
+
+مصدوم میدی بشه داستانی
+
+خوش اومدی به بلاد پارتی
+
+کاری باهات نداریم با کاگانی
+
+کنیاک بگیریم تا پاگانی
+
+کار یاد میگیرین با چاقالی
+
+سروش پسره رو دیدی چقد خپله
+
+دستتو گاز گرفت فکر کرده زبله
+
+بالاخواهش دنبال دیه بگو گبله
+
+در و دافاشونو نگاه کنی همه کبره
+
+وینی بهش 5g رو نده بخواد بکشه
+
+دیس بک نیست * اینا AKه
+
+لک بلاد میفته رو پیرهنت کرمت
+
+داشم باهات دستی میکشه مث شورولت
+
+سروش دیگه همه میخونن انگاری رپ مُده
+
+شرط میبندم کی مث من و تو رپکنه
+
+هند ساین بی خالکوبی شده سمبله
+
+سلامتی بلاد میزنم بیا سرگله
+
+عرعقامون هیچ بیو نمیکنه هنگ اُور
+
+بلاد دارم چریکی سراوانی تا ونکوور
+
+وینی اینا رفاقتو نیمفهمن در کل
+
+یه چی بینمون بهم میخوره که الکله
+
+خوش اومدی به بلاد پارتی
+
+کاری باهات نداریم با کاگانی
+
+خوش اومدی به بلاد پارتی
+
+مصدوم میدی بشه داستانی
+
+خوش اومدی به بلاد پارتی
+
+کاری باهات نداریم با کاگانی
+
+کنیاک بگیریم تا پاگانی
+
+کار یاد میگیرین با چاقالی
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 12 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Boz
+        </div>
+
+        <div class="song-artist">
+            Hiphopologist
+        </div>
+
+    </div>
+
+
+    <audio src="Hiphopologist - Boz.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+            متن آهنگ را اینجا قرار بده 🎵
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- آهنگ 13 -->
+
+<div class="custom-player">
+
+    <div class="song-info">
+
+        <div class="song-name">
+            Kase Kozato Jam Kon
+        </div>
+
+        <div class="song-artist">
+            آریا موزیک
+        </div>
+
+    </div>
+
+
+    <audio src="https://dl.uptrack.ir/Uptrack-ROOt/1401/04%20Tir/09/Kase%20Kozato%20Jam%20Kon%20Song.mp3"></audio>
+
+
+    <div class="progress-area">
+
+        <span class="current-time">0:00</span>
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+        <span class="duration">0:00</span>
+
+    </div>
+
+
+    <div class="player-buttons">
+
+        <button class="play-btn">
+            ▶
+        </button>
+
+    </div>
+
+
+    <button class="lyrics-btn">
+        📝 نمایش متن آهنگ
+    </button>
+
+
+    <div class="lyrics">
+
+        <p>
+        دیگه ازت بریدم دلم و نمیدم پررو شدی دختر دور تو خط کشیدم
+
+همه حرفات دروغه سر تو شلوغه رفتی منو دور زدی حالتو بد می گیرم
+
+دیگه ازت بریدم بس کن دلمو نمیدم بس کن پررو شدی دختر دور تو خط کشیدم
+
+همه حرفات دروغ میدونم سر تو شلوغه رفتی منو دور زدی حالتو بد میگیرم
+
+برو بذار تا باد بیاد برو دلم موزیک شاد میخواد برو
+
+کاسه کوزت و جمع کن برو از این خونه امشب کاسه کوزت و جمع کن برو که به خون تو تشنم
+
+کاسه کوزت و جمع کن برو از این خونه امشب کاسه کوزت و جمع کن برو که به خون تو تشنم
+
+دیگه رنگی نداره واسم اشکات معنی نداره واسم حرفات
+
+تورم میپیچم بری پی پارتیت چون نمیدونم برقصم به چه سازیت
+
+دیگه تو رو نمی خوامت برو نمیام به دیدن تو من
+
+از تو بریدم کشیدم بیرون فک نکن دل به تو میدم عمرا
+
+توم میتونی بری بگی زود به همه
+
+پشیمونی چون عزیزم خیانت تو کارت بود یه نمه یه نمه یه نمه
+
+نگو که دوسم داری نگو واست می میرم تو هم گربه صفتی حالت و بد می گیرم
+
+آخه واست چی کم گذاشتم فقط پرادو دو در نداشتم
+
+دیدی دیگه تورو نمیخوام دور تو خط کشیدم
+
+برو بذار تا باد بیاد برو دلم موزیک شاد می خواد برو
+
+کاسه کوزت و جمع کن برو از این خونه امشب
+
+کاسه کوزتو جمع کن برو که به خون تو تشنم
+
+کاسه کوزت و جمع کن برو از این خونه امشب
+
+کاسه کوزتو جمع کن برو که به خون تو تشنم
+
+چشات دیگه نیست برا من نگو من حتی آدم هیز در آرم
+
+تو با یکی دیگه لللله من بگم واسه تو بی قرارم
+
+بگو چرا عشوه میای و بعد همش میگی که عشق زیاد
+
+نیست بینمون زشته میای میگی عشق تو به چشم نمیاد
+
+تو اصلا بگو ببینم با چه عینی نوشته میشه عشق
+
+زندگیم با وجود تو حتی اگه بهشته میشه زشت
+
+نگو که دوسم داری نگو واست می میرم
+
+توم گربه صفتی حالت و بد می گیرم
+
+آخه واست چی کم گذاشتم فقط پرادو دودر نداشتم
+
+دیدی دیگه تو رو نمی خوام دور تو خط کشیدم
+
+برو بذار تا باد بیاد دلم موزیک شاد میخواد برو
+
+کاسه کوزتو جمع کن برو از این خونه امشب
+
+کاسه کوزتو جمع کن برو که به خون تو تشنم
+
+کاسه کوزتو جمع کن برو از این خونه امشب
+
+کاسه کوزتو جمع کن برو که به خون تو تشنم
+        </p>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="main-footer">
+
+    <p>
+        تمامی این حقوق متعلق به سایت موزیک آریا می باشد
+        @حقوق کپی رایت 2026
+    </p>
+
+
+    <ul class="social-links">
+
+        <li>
+            <a
+                href="https://www.aparat.com/Ariya_1515"
+                target="_blank"
+            >
+                Aparat
+            </a>
+        </li>
+
+
+        <li>
+            <a href="#">
+                Instagram
+            </a>
+        </li>
+
+
+        <li>
+            <a href="#">
+                Discord
+            </a>
+        </li>
+
+    </ul>
+
+</footer>
+
+
+
+<script>
+
+/* =========================
+   MUSIC PLAYER SYSTEM
+========================= */
+
+document
+    .querySelectorAll(".custom-player")
+    .forEach(player => {
+
+
+    const audio =
+        player.querySelector("audio");
+
+
+    const playBtn =
+        player.querySelector(".play-btn");
+
+
+    const progress =
+        player.querySelector(".progress");
+
+
+    const fill =
+        player.querySelector(".progress-fill");
+
+
+    const current =
+        player.querySelector(".current-time");
+
+
+    const duration =
+        player.querySelector(".duration");
+
+
+    const lyricsBtn =
+        player.querySelector(".lyrics-btn");
+
+
+    const lyrics =
+        player.querySelector(".lyrics");
+
+
+    /* =====================
+       PLAY / PAUSE
+    ===================== */
+
+    playBtn.addEventListener(
+        "click",
+        () => {
+
+
+        if (audio.paused) {
+
+
+            /*
+             توقف بقیه آهنگ ها
+            */
+
+            document
+                .querySelectorAll(
+                    ".custom-player audio"
+                )
+                .forEach(other => {
+
+
+                if (other !== audio) {
+
+                    other.pause();
+
+
+                    const otherPlayer =
+                        other.closest(
+                            ".custom-player"
+                        );
+
+
+                    otherPlayer
+                        .querySelector(
+                            ".play-btn"
+                        )
+                        .innerHTML = "▶";
+
+                }
+
+            });
+
+
+            audio.play();
+
+            playBtn.innerHTML = "⏸";
+
+
+        } else {
+
+
+            audio.pause();
+
+            playBtn.innerHTML = "▶";
+
+        }
+
+    });
+
+
+    /* =====================
+       PROGRESS UPDATE
+    ===================== */
+
+    audio.addEventListener(
+        "timeupdate",
+        () => {
+
+
+        if (!audio.duration)
+            return;
+
+
+        const percent =
+            (
+                audio.currentTime /
+                audio.duration
+            ) * 100;
+
+
+        fill.style.width =
+            percent + "%";
+
+
+        current.innerHTML =
+            formatTime(
+                audio.currentTime
+            );
+
+    });
+
+
+    /* =====================
+       DURATION
+    ===================== */
+
+    audio.addEventListener(
+        "loadedmetadata",
+        () => {
+
+
+        duration.innerHTML =
+            formatTime(
+                audio.duration
+            );
+
+    });
+
+
+    /* =====================
+       CLICK PROGRESS
+    ===================== */
+
+    progress.addEventListener(
+        "click",
+        event => {
+
+
+        if (!audio.duration)
+            return;
+
+
+        const width =
+            progress.clientWidth;
+
+
+        const clickX =
+            event.offsetX;
+
+
+        audio.currentTime =
+            (
+                clickX / width
+            ) * audio.duration;
+
+    });
+
+
+    /* =====================
+       LYRICS
+    ===================== */
+
+    lyricsBtn.addEventListener(
+        "click",
+        () => {
+
+
+        lyrics.classList.toggle(
+            "show"
+        );
+
+
+        if (
+            lyrics.classList
+                .contains("show")
+        ) {
+
+
+            lyricsBtn.innerHTML =
+                "🔼 بستن متن آهنگ";
+
+
+        } else {
+
+
+            lyricsBtn.innerHTML =
+                "📝 نمایش متن آهنگ";
+
+        }
+
+    });
+
+
+    /* =====================
+       SONG ENDED
+    ===================== */
+
+    audio.addEventListener(
+        "ended",
+        () => {
+
+
+        playBtn.innerHTML = "▶";
+
+        fill.style.width = "0%";
+
+        current.innerHTML = "0:00";
+
+    });
+
+
+});
+
+
+/* =========================
+   TIME FORMAT
+========================= */
+
+function formatTime(seconds) {
+
+
+    const minutes =
+        Math.floor(
+            seconds / 60
+        );
+
+
+    const secondsLeft =
+        Math.floor(
+            seconds % 60
+        );
+
+
+    return (
+
+        minutes +
+
+        ":" +
+
+        (
+            secondsLeft < 10
+            ? "0"
+            : ""
+        ) +
+
+        secondsLeft
+
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
